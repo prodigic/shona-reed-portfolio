@@ -1,187 +1,88 @@
-# Shona Reed - Modern Portfolio Site
+# Shona Reed Portfolio
 
-A modern, responsive portfolio website showcasing UX research and design work. Built with vanilla HTML, CSS, and JavaScript featuring a sophisticated dark theme and full-screen project modals.
+Modern portfolio website for Shona Reed - UX Researcher & Designer
 
-## ✨ Features
+## 🌟 Features
 
-- **2026 Modern Design**: Refined brutalism meets contemporary minimalism aesthetic
-- **Dark-First Theme**: Sophisticated color palette with strategic accent colors
-- **Full-Screen Modals**: Enhanced project viewing with image galleries
-- **Responsive Layout**: Clean grid system that adapts to all screen sizes
-- **Professional Typography**: Playfair Display, IBM Plex Sans, and JetBrains Mono
-- **Smooth Animations**: CSS transitions and intersection observer effects
-- **Keyboard Navigation**: Arrow keys and Escape key support in modals
+- **Modern 2026 Design**: Sophisticated dark-first aesthetic with vibrant accent colors
+- **Accessible**: WCAG-compliant color contrast and interactive elements
+- **Dark/Light Mode**: Toggle between themes with smooth transitions
+- **Responsive Layout**: Beautiful 2-column grid that adapts to all screen sizes
+- **Full-Screen Modals**: Immersive project showcases with color-matched backgrounds
+- **Vibrant Color Palette**: Inspired by contemporary design trends with hot pink, purple, yellow, and teal accents
+- **Smooth Animations**: Intersection Observer-powered scroll effects and micro-interactions
 
-## 🎨 Design System
+## 🚀 Live Demo
 
-### Colors
-- **Primary Background**: `#0a0a0a` (Deep black)
-- **Secondary Background**: `#1a1a1a` (Dark gray)
-- **Accent Color**: `#ff6b35` (Strategic orange)
-- **Text Primary**: `#ffffff` (White)
-- **Text Secondary**: `#a0a0a0` (Light gray)
+Visit the live site: [http://www.prodigic.com/shona-reed-portfolio/](http://www.prodigic.com/shona-reed-portfolio/)
 
-### Typography
-- **Display Font**: Playfair Display (headings)
-- **Body Font**: IBM Plex Sans (content)
-- **Monospace Font**: JetBrains Mono (labels, code)
+Alternative URL: [https://prodigic.github.io/shona-reed-portfolio/](https://prodigic.github.io/shona-reed-portfolio/)
 
-## 🚀 Getting Started
+## 🛠 Technology Stack
 
-### Prerequisites
-- A local web server (Python, Node.js, or any HTTP server)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/prodigic/shona-reed-portfolio.git
-   cd shona-reed-portfolio
-   ```
-
-2. **Start a local server**
-
-   **Using Python:**
-   ```bash
-   python -m http.server 8080
-   ```
-
-   **Using Node.js (if you have http-server installed):**
-   ```bash
-   npm install -g http-server
-   http-server -p 8080
-   ```
-
-3. **Open in browser**
-   ```
-   http://localhost:8080
-   ```
+- **HTML5**: Semantic markup with accessibility in mind
+- **CSS3**: Modern CSS with CSS Grid, Flexbox, and custom properties
+- **Vanilla JavaScript**: ES6+ features with modular design
+- **GitHub Pages**: Hosted and deployed automatically
 
 ## 📁 Project Structure
 
 ```
-shona-reed-portfolio/
-├── index.html              # Original Jekyll-migrated version
-├── index-modern.html       # 2026 modern redesigned version ⭐
-├── package.json           # Project configuration
-├── tailwind.config.js     # Tailwind CSS configuration
-├── data/
-│   └── projects.json      # Portfolio project data
-├── src/
-│   ├── js/
-│   │   ├── main.js        # Original functionality
-│   │   └── main-modern.js # Enhanced modern functionality ⭐
-│   └── styles/
-│       └── globals.css    # Base Tailwind styles
+├── index-modern.html          # Main HTML file
 ├── dist/
-│   ├── styles.css         # Original compiled CSS
-│   └── styles-modern.css  # Modern design CSS ⭐
-└── assets/
-    └── images/           # Project images and client logos
+│   └── styles-modern.css      # Compiled CSS styles
+├── src/
+│   └── js/
+│       └── main-modern.js     # JavaScript functionality
+├── assets/
+│   └── images/                # Project images and logos
+├── data/
+│   └── projects.json          # Portfolio project data
+└── README.md
 ```
-
-## 🎯 Key Files
-
-- **`index-modern.html`** - The main modern portfolio page
-- **`dist/styles-modern.css`** - Complete modern design system
-- **`src/js/main-modern.js`** - Enhanced JavaScript functionality
-- **`data/projects.json`** - Portfolio project data structure
-
-## 📊 Project Data Structure
-
-Each project in `data/projects.json` follows this structure:
-
-```json
-{
-  "id": "unique-project-id",
-  "title": "Project Title",
-  "client": "Client Name",
-  "role": "Your Role",
-  "tags": ["tag1", "tag2", "tag3"],
-  "description": "Detailed project description...",
-  "thumbnail": "project-thumbnail.png",
-  "clientLogo": "client-logo.png", // Optional
-  "images": ["image1.png", "image2.png"], // Gallery images
-  "projectDate": "2024",
-  "modalId": 1
-}
-```
-
-## 🖼️ Adding Client Logos
-
-Client logos are displayed in project modals with professional styling:
-
-1. **Add logo file** to `assets/images/` (PNG or SVG)
-2. **Update project data** with `clientLogo` field
-3. **Logo styling** automatically applies (200px width, white background)
-
-## 🔧 Customization
-
-### Colors
-Edit CSS variables in `dist/styles-modern.css`:
-```css
-:root {
-  --color-accent: #ff6b35;      /* Change accent color */
-  --color-bg-primary: #0a0a0a;  /* Change background */
-}
-```
-
-### Typography
-Update font imports and variables:
-```css
---font-display: 'Your Display Font', serif;
---font-body: 'Your Body Font', sans-serif;
-```
-
-## 🌟 Modern Features
-
-### Full-Screen Modals
-- Click any project to open full-screen modal
-- Navigate images with arrow keys or thumbnails
-- Close with Escape key or X button
-- Smooth transitions and animations
-
-### Responsive Design
-- Mobile-first approach
-- Breakpoints: 768px (tablet), 1024px (desktop)
-- Flexible grid system
-- Touch-friendly navigation
-
-### Performance
-- Lazy loading images
-- CSS variables for consistency
-- Optimized animations
-- Minimal JavaScript footprint
 
 ## 🎨 Design Philosophy
 
-**Refined Brutalism meets Contemporary Minimalism**
-- Bold typography with elegant spacing
-- Strategic use of color and contrast
-- Sophisticated dark theme
-- Professional client presentation
-- Modern interaction patterns
+This portfolio combines:
+- **Professional Excellence**: Clean typography and structured layouts
+- **Creative Flair**: Vibrant color palette and playful interactions
+- **User Experience**: Intuitive navigation and accessible design
+- **Modern Aesthetics**: Contemporary design trends with timeless appeal
 
-## 📱 Browser Support
+## 🔧 Development
 
-- Chrome/Edge 88+
-- Firefox 85+
-- Safari 14+
-- Mobile browsers (iOS Safari, Chrome Mobile)
+To run locally:
 
-## 🤝 Contributing
+1. Clone the repository
+2. Open `index-modern.html` in a web browser
+3. Or serve with any local server:
+   ```bash
+   npx http-server -p 8080
+   ```
 
-This is a portfolio project. For suggestions or improvements:
+## 📱 Responsive Design
 
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
+- **Mobile**: Single column layout with touch-optimized interactions
+- **Tablet**: Balanced 2-column grid with optimized spacing
+- **Desktop**: Full 2-column layout with rich hover effects
 
-## 📄 License
+## ♿ Accessibility
 
-This project is for portfolio demonstration purposes.
+- WCAG 2.1 AA compliant color contrasts
+- Semantic HTML structure
+- Keyboard navigation support
+- Screen reader optimized content
+- High contrast mode compatible
+
+## 🎯 Performance
+
+- Optimized images with lazy loading
+- Minimal JavaScript footprint
+- CSS-only animations where possible
+- Fast loading and smooth interactions
 
 ---
 
-**Built with ❤️ using modern web technologies**
-*Designed and developed in 2026*
+**Created with ❤️ for exceptional user experiences**
+
+Portfolio showcasing research-driven design across startups to Fortune 500 companies.
