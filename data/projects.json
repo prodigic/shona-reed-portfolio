@@ -1,0 +1,79 @@
+[
+  {
+    "id": "uxisready",
+    "title": "UX is Ready",
+    "client": "UX is Ready",
+    "role": "Founder / UX Consultant",
+    "tags": ["ux consultancy", "startups", "lean ux"],
+    "description": "UX is Ready is a research & design consultancy based in Barcelona, working with clients both locally and Internationally. Some of our clients need to improve their existing user experiences, while others hire us to craft a new product or service. We tailor our process to meet each clients needs, shaping products and services that work and customers enjoy using.",
+    "thumbnail": "uxisready.png",
+    "clientLogo": "logo_uxisready.png",
+    "images": ["uxisready_a.png", "uxisready_b.png"],
+    "projectDate": "April 2010",
+    "modalId": 1
+  },
+  {
+    "id": "prints",
+    "title": "Snapfish Photos Prints",
+    "client": "Snapfish Photos Prints",
+    "role": "UX Designer",
+    "tags": ["e-commerce", "photo apps"],
+    "description": "Redesigning the photo printing experience for Snapfish, focusing on improving the user journey from photo selection to checkout completion.",
+    "thumbnail": "prints.png",
+    "clientLogo": "logo_snapfish.svg",
+    "images": ["prints_a.png", "prints_b.png", "prints_c.png"],
+    "projectDate": "2015",
+    "modalId": 2
+  },
+  {
+    "id": "checkout",
+    "title": "Snapfish Checkout",
+    "client": "Snapfish Checkout",
+    "role": "UX Designer",
+    "tags": ["e-commerce", "worldwide"],
+    "description": "Streamlining the checkout process for Snapfish's global e-commerce platform to reduce cart abandonment and improve conversion rates.",
+    "thumbnail": "checkout.png",
+    "clientLogo": "logo_snapfish.svg",
+    "images": ["checkout_a.png", "checkout_b.png", "checkout_c.png"],
+    "projectDate": "2015",
+    "modalId": 3
+  },
+  {
+    "id": "bluewolf",
+    "title": "Bluewolf",
+    "client": "Bluewolf",
+    "role": "UX Designer",
+    "tags": ["crm solution", "media and sales"],
+    "description": "Designing CRM solutions focused on media and sales teams, creating intuitive interfaces that help businesses manage customer relationships more effectively.",
+    "thumbnail": "bluewolf.png",
+    "images": ["bluewolf_a.png"],
+    "projectDate": "2015",
+    "modalId": 4
+  },
+  {
+    "id": "bofa",
+    "title": "Bank of America",
+    "client": "Bank of America",
+    "role": "UX Designer",
+    "tags": ["online banking", "financial tools"],
+    "description": "Improving the online banking experience with focus on financial tools and user interface design for better customer engagement and usability.",
+    "thumbnail": "bofa.png",
+    "clientLogo": "logo_bofa_2.png",
+    "images": ["bofa_a.png"],
+    "projectDate": "2015",
+    "modalId": 5
+  },
+  {
+    "id": "aau",
+    "title": "Academy Of Art",
+    "client": "Academy Of Art",
+    "role": "UX Designer",
+    "tags": ["e-learning", "university", "educational"],
+    "description": "Designing educational technology solutions for the Academy of Art University, focusing on e-learning platforms and university systems to enhance the student experience.",
+    "thumbnail": "academyofart.png",
+    "clientLogo": "logo_academyofart.png",
+    "images": ["academyofart_a.png"],
+    "projectDate": "2015",
+    "modalId": 6
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "name": "shona-reed-portfolio",
+  "version": "1.0.0",
+  "description": "Shona Reed's portfolio - Static HTML with Tailwind CSS",
+  "main": "index.html",
+  "scripts": {
+    "dev": "concurrently \"npm run css:watch\" \"http-server -p 8080\"",
+    "build": "tailwindcss -i ./src/styles/globals.css -o ./dist/styles.css --minify",
+    "css:watch": "tailwindcss -i ./src/styles/globals.css -o ./dist/styles.css --watch",
+    "serve": "http-server -p 8080"
+  },
+  "keywords": ["portfolio", "tailwindcss", "static-site"],
+  "author": "Shona Reed",
+  "license": "ISC"
+}

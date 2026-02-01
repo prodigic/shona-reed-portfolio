@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shona Reed - UX Researcher & Designer</title>
+    <meta name="description" content="Lead UX Researcher & Designer with over ten years experience leading UX and service design projects across multiple channels.">
+    <link rel="stylesheet" href="dist/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body id="page-top" class="font-lato bg-white">
+
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="container">
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button">
+                <span class="sr-only">Toggle navigation</span>
+                <div>
+                    <span id="line1"></span>
+                    <span id="line2"></span>
+                    <span id="line3"></span>
+                </div>
+            </button>
+
+            <!-- Desktop navigation -->
+            <div>
+                <a href="#portfolio" class="nav-link">Projects</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+
+            <!-- Mobile navigation menu -->
+            <div id="mobile-menu" class="hidden">
+                <div>
+                    <a href="#portfolio">Projects</a>
+                    <a href="#about">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#page-top">
+                <img src="assets/images/shona_logo2.svg" alt="Shona Reed Logo">
+            </a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="profile-col">
+                <img src="assets/images/hi_res.png" alt="Shona Reed">
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/shonar" target="_blank" rel="noopener">
+                        <img src="assets/images/linkedin_icon.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://twitter.com/uxisready?refsrc=email" target="_blank" rel="noopener">
+                        <img src="assets/images/twitter_icon.svg" alt="Twitter">
+                    </a>
+                    <a href="mailto:ux@shonareed.com?subject=hello%20(via%20shonareed.com)&body=Hit%20send%20and%20I%27ll%20get%20right%20back%20to%20you.%20-%20Shona">
+                        <img src="assets/images/email_icon.svg" alt="Email">
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-col">
+                <h3>About</h3>
+                <p>
+                    I am a lead <span>UX Researcher & Designer</span> with over <span>ten years experience</span> leading UX and service design projects across multiple channels. I have aided many companies, from <span>start‑ups</span> to <span>Fortune 500 companies</span> to launch successful products.
+                </p>
+                <p>
+                    My approach balances <span>qualitative and quantitative research methods</span> with creative flair and a <span>genuine passion</span> for creating products people are excited to use.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h3>Selected Projects</h3>
+            <div id="portfolio-grid">
+                <!-- Projects will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/shonar" target="_blank" rel="noopener">
+                    <img src="assets/images/linkedin_icon.svg" alt="LinkedIn">
+                </a>
+                <a href="https://twitter.com/uxisready?refsrc=email" target="_blank" rel="noopener">
+                    <img src="assets/images/twitter_icon.svg" alt="Twitter">
+                </a>
+                <a href="mailto:ux@shonareed.com?subject=hello%20(via%20shonareed.com)&body=Hit%20send%20and%20I%27ll%20get%20right%20back%20to%20you.%20-%20Shona">
+                    <img src="assets/images/email_icon.svg" alt="Email">
+                </a>
+            </div>
+
+            <p>Copyright &copy; Shona Reed 2026</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div id="scroll-top" class="fixed bottom-6 right-6 z-50 opacity-0 invisible transition-all duration-300">
+        <button class="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Full-Screen Modal -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div id="modal-content" class="full-screen-modal animate-slide-up">
+            <!-- Modal content will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script src="src/js/main.js"></script>
+</body>
+</html>
