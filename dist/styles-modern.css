@@ -715,22 +715,18 @@ nav .container {
   }
 
   .modal-body {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    display: block;
   }
 
   .modal-image-section {
-    min-height: 40vh;
-    max-height: 50vh;
-  }
-
-  .modal-image {
-    max-height: 35vh;
+    display: none;
   }
 
   .modal-info-section {
     padding: var(--spacing-md);
     font-size: 0.9rem;
+    height: 100%;
+    overflow-y: auto;
   }
 
   .modal-info-section h2 {
@@ -740,6 +736,21 @@ nav .container {
 
   .modal-info-section h4 {
     font-size: 0.8rem !important;
+  }
+
+  /* Inline mobile image styling */
+  .modal-info-section::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 200px;
+    background-image: var(--modal-image-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--color-bg-primary);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
   }
 }
 
@@ -752,16 +763,6 @@ nav .container {
 
   .modal-overlay {
     padding: var(--spacing-xs);
-  }
-
-  .modal-image-section {
-    min-height: 35vh;
-    max-height: 40vh;
-    padding: var(--spacing-sm);
-  }
-
-  .modal-image {
-    max-height: 30vh;
   }
 
   .modal-info-section {
@@ -791,6 +792,11 @@ nav .container {
   .image-thumbnail {
     width: 45px !important;
     height: 30px !important;
+  }
+
+  /* Smaller inline image for very narrow screens */
+  .modal-info-section::before {
+    height: 160px;
   }
 }
 

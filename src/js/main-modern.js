@@ -110,6 +110,9 @@ class ModernPortfolio {
         if (project.images && project.images.length > 0) {
             modalImage.src = `assets/images/${project.images[this.currentImageIndex]}`;
             modalImage.alt = project.title;
+
+            // Set CSS custom property for mobile inline image
+            modalInfoSection.style.setProperty('--modal-image-url', `url('assets/images/${project.images[this.currentImageIndex]}')`);
         }
 
         // Render project information
@@ -237,6 +240,7 @@ class ModernPortfolio {
 
     updateModalImage() {
         const modalImage = document.getElementById('modal-image');
+        const modalInfoSection = document.querySelector('.modal-info-section');
         if (!modalImage || !this.currentProject || !this.currentProject.images) return;
 
         // Smooth transition
@@ -245,6 +249,11 @@ class ModernPortfolio {
         setTimeout(() => {
             modalImage.src = `assets/images/${this.currentProject.images[this.currentImageIndex]}`;
             modalImage.style.opacity = '1';
+
+            // Update CSS custom property for mobile inline image
+            if (modalInfoSection) {
+                modalInfoSection.style.setProperty('--modal-image-url', `url('assets/images/${this.currentProject.images[this.currentImageIndex]}')`);
+            }
         }, 150);
 
         // Update thumbnails
