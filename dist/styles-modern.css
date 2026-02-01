@@ -701,6 +701,99 @@ nav .container {
   }
 }
 
+/* Modal Responsive Fixes */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: var(--spacing-xs);
+  }
+
+  .modal-content {
+    width: 100%;
+    height: 95vh;
+    max-width: 100vw;
+    max-height: 95vh;
+  }
+
+  .modal-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .modal-image-section {
+    min-height: 40vh;
+    max-height: 50vh;
+  }
+
+  .modal-image {
+    max-height: 35vh;
+  }
+
+  .modal-info-section {
+    padding: var(--spacing-md);
+    font-size: 0.9rem;
+  }
+
+  .modal-info-section h2 {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .modal-info-section h4 {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    height: 98vh;
+    max-height: 98vh;
+    border-radius: var(--border-radius);
+  }
+
+  .modal-overlay {
+    padding: var(--spacing-xs);
+  }
+
+  .modal-image-section {
+    min-height: 35vh;
+    max-height: 40vh;
+    padding: var(--spacing-sm);
+  }
+
+  .modal-image {
+    max-height: 30vh;
+  }
+
+  .modal-info-section {
+    padding: var(--spacing-sm);
+    font-size: 0.85rem;
+  }
+
+  .modal-info-section h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .modal-info-section h4 {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .modal-info-section p {
+    line-height: 1.5 !important;
+  }
+
+  .project-tag {
+    padding: 3px 8px;
+    font-size: 0.7rem;
+  }
+
+  .image-thumbnail {
+    width: 45px !important;
+    height: 30px !important;
+  }
+}
+
 /* Utility Classes */
 .container {
   max-width: 1400px;
