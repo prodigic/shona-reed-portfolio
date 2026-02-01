@@ -300,6 +300,17 @@ class ModernPortfolio {
             });
         }
 
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
+
+        // Initialize theme from localStorage
+        this.initializeTheme();
+
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
@@ -441,6 +452,47 @@ class ModernPortfolio {
         document.querySelectorAll('.project-card').forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
         });
+    }
+
+    // Theme functionality
+    initializeTheme() {
+        // Check localStorage for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Set initial theme: saved preference, then system preference, default to dark
+        const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+        if (initialTheme === 'light') {
+            document.documentElement.classList.add('light-theme');
+        } else {
+            document.documentElement.classList.remove('light-theme');
+        }
+
+        // Store the current theme
+        localStorage.setItem('theme', initialTheme);
+    }
+
+    toggleTheme() {
+        const isLightMode = document.documentElement.classList.contains('light-theme');
+
+        if (isLightMode) {
+            // Switch to dark mode
+            document.documentElement.classList.remove('light-theme');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            // Switch to light mode
+            document.documentElement.classList.add('light-theme');
+            localStorage.setItem('theme', 'light');
+        }
+
+        // Add a subtle transition effect
+        document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+
+        // Remove transition after animation completes to avoid affecting other animations
+        setTimeout(() => {
+            document.documentElement.style.transition = '';
+        }, 300);
     }
 
     // Utility functions

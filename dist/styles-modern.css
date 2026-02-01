@@ -1,7 +1,7 @@
 /* 2026 Modern Portfolio - Refined Brutalism × Contemporary Minimalism */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-/* CSS Variables */
+/* CSS Variables - Dark Theme (Default) */
 :root {
   --color-bg-primary: #0a0a0a;
   --color-bg-secondary: #1a1a1a;
@@ -34,6 +34,24 @@
   --transition-fast: 0.15s ease-out;
   --transition-medium: 0.3s ease-out;
   --transition-slow: 0.6s ease-out;
+}
+
+/* Light Theme Variables */
+:root.light-theme {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-text-primary: #212529;
+  --color-text-secondary: #495057;
+  --color-text-tertiary: #6c757d;
+  --color-accent: #ff6b35;
+  --color-accent-soft: #0066cc;
+  --color-border: #dee2e6;
+  --color-success: #28a745;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.2);
 }
 
 /* Reset & Base */
@@ -93,10 +111,19 @@ nav {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 26, 0.95);
+  background: rgba(var(--nav-bg-rgb, 10, 10, 26), 0.95);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
   transition: var(--transition-medium);
+}
+
+/* Navigation background RGB values for transparency */
+:root {
+  --nav-bg-rgb: 10, 10, 26;
+}
+
+:root.light-theme {
+  --nav-bg-rgb: 248, 249, 250;
 }
 
 nav .container {
@@ -139,6 +166,66 @@ nav .container {
 
 .nav-link.active {
   color: var(--color-accent);
+}
+
+/* Navigation Controls */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.theme-icon {
+  color: var(--color-text-secondary);
+  transition: var(--transition-medium);
+  position: absolute;
+}
+
+.theme-toggle:hover .theme-icon {
+  color: var(--color-accent);
+}
+
+/* Theme icon visibility */
+:root .sun-icon {
+  opacity: 0;
+  transform: rotate(180deg) scale(0.8);
+}
+
+:root .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+:root.light-theme .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+:root.light-theme .moon-icon {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0.8);
 }
 
 /* Mobile Navigation */
