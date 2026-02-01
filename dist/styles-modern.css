@@ -1,7 +1,7 @@
 /* 2026 Modern Portfolio - Refined Brutalism × Contemporary Minimalism */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-/* CSS Variables - Dark Theme (Default) */
+/* CSS Variables - Dark Theme (Default) with Vibrant Accents */
 :root {
   --color-bg-primary: #0a0a0a;
   --color-bg-secondary: #1a1a1a;
@@ -9,10 +9,20 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #a0a0a0;
   --color-text-tertiary: #666666;
-  --color-accent: #ff6b35;
-  --color-accent-soft: #4a9eff;
+
+  /* Vibrant Pratibha-inspired palette */
+  --color-accent: #de0f66;        /* Hot pink primary */
+  --color-accent-secondary: #5a08ea;  /* Deep purple */
+  --color-accent-yellow: #FECE4E;     /* Bright yellow */
+  --color-accent-teal: #29DAB6;       /* Vibrant teal */
+  --color-accent-soft: #FCA9D1;      /* Light pink */
+
   --color-border: #333333;
-  --color-success: #00ff88;
+  --color-success: #29DAB6;           /* Use teal for success */
+
+  /* Gradient variables */
+  --gradient-primary: linear-gradient(135deg, #de0f66 0%, #5a08ea 100%);
+  --gradient-soft: linear-gradient(135deg, #FCA9D1 0%, #de0f66 100%);
 
   --font-display: 'Playfair Display', serif;
   --font-body: 'IBM Plex Sans', sans-serif;
@@ -36,18 +46,28 @@
   --transition-slow: 0.6s ease-out;
 }
 
-/* Light Theme Variables */
+/* Light Theme Variables with Vibrant Accents */
 :root.light-theme {
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f8f9fa;
   --color-bg-tertiary: #e9ecef;
-  --color-text-primary: #212529;
+  --color-text-primary: #0a0a14;         /* Pratibha's dark navy */
   --color-text-secondary: #495057;
   --color-text-tertiary: #6c757d;
-  --color-accent: #ff6b35;
-  --color-accent-soft: #0066cc;
+
+  /* Same vibrant palette for consistency */
+  --color-accent: #de0f66;
+  --color-accent-secondary: #5a08ea;
+  --color-accent-yellow: #FECE4E;
+  --color-accent-teal: #29DAB6;
+  --color-accent-soft: #FCA9D1;
+
   --color-border: #dee2e6;
-  --color-success: #28a745;
+  --color-success: #29DAB6;
+
+  /* Lighter gradients for light theme */
+  --gradient-primary: linear-gradient(135deg, #de0f66 0%, #5a08ea 100%);
+  --gradient-soft: linear-gradient(135deg, #FCA9D1 0%, #de0f66 100%);
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -255,8 +275,8 @@ nav .container {
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at 30% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 70%),
-              radial-gradient(ellipse at 70% 80%, rgba(74, 158, 255, 0.08) 0%, transparent 70%),
+  background: radial-gradient(ellipse at 30% 20%, rgba(222, 15, 102, 0.15) 0%, transparent 70%),
+              radial-gradient(ellipse at 70% 80%, rgba(90, 8, 234, 0.1) 0%, transparent 70%),
               var(--color-bg-primary);
 }
 
@@ -288,7 +308,7 @@ nav .container {
   font-weight: 700;
   line-height: 0.9;
   margin-bottom: var(--spacing-md);
-  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-secondary) 100%);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -322,14 +342,14 @@ nav .container {
 }
 
 .btn-primary {
-  background: var(--color-accent);
+  background: var(--gradient-primary);
   color: white;
   box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
-  background: #ff5722;
-  transform: translateY(-2px);
+  background: var(--gradient-soft);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: var(--shadow-md);
 }
 
@@ -471,7 +491,7 @@ nav .container {
 /* Project Grid */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: var(--spacing-lg);
 }
 
@@ -484,6 +504,32 @@ nav .container {
   cursor: pointer;
   position: relative;
   group: hover;
+  padding: var(--spacing-lg);
+}
+
+/* Pastel Background Colors for Each Card */
+.project-card:nth-child(1) {
+  background: linear-gradient(135deg, rgba(252, 169, 209, 0.2) 0%, rgba(222, 15, 102, 0.1) 100%);
+}
+
+.project-card:nth-child(2) {
+  background: linear-gradient(135deg, rgba(254, 206, 78, 0.2) 0%, rgba(255, 193, 7, 0.1) 100%);
+}
+
+.project-card:nth-child(3) {
+  background: linear-gradient(135deg, rgba(41, 218, 182, 0.2) 0%, rgba(0, 200, 170, 0.1) 100%);
+}
+
+.project-card:nth-child(4) {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(90, 8, 234, 0.1) 100%);
+}
+
+.project-card:nth-child(5) {
+  background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 105, 135, 0.1) 100%);
+}
+
+.project-card:nth-child(6) {
+  background: linear-gradient(135deg, rgba(173, 216, 230, 0.2) 0%, rgba(100, 149, 237, 0.1) 100%);
 }
 
 .project-card:hover {
@@ -497,6 +543,7 @@ nav .container {
   height: 280px;
   object-fit: cover;
   transition: var(--transition-slow);
+  border-radius: var(--border-radius);
 }
 
 .project-card:hover .project-image {
@@ -504,7 +551,8 @@ nav .container {
 }
 
 .project-content {
-  padding: var(--spacing-md);
+  padding: 0;
+  margin-top: var(--spacing-md);
 }
 
 .project-title {
@@ -542,6 +590,48 @@ nav .container {
   font-size: 0.8rem;
   font-weight: 500;
   border: 1px solid var(--color-border);
+  transition: var(--transition-fast);
+}
+
+/* Accessible vibrant tag variants - high contrast combinations */
+.project-tag:nth-child(1) {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.project-tag:nth-child(2) {
+  background: #E6A500;  /* Darker yellow for better contrast */
+  color: white;
+  border-color: #E6A500;
+}
+
+.project-tag:nth-child(3) {
+  background: #1DB88A;  /* Darker teal for better contrast */
+  color: white;
+  border-color: #1DB88A;
+}
+
+.project-tag:nth-child(4) {
+  background: var(--color-accent-secondary);
+  color: white;
+  border-color: var(--color-accent-secondary);
+}
+
+.project-tag:nth-child(5) {
+  background: #FC7FB0;  /* Light pink with dark text */
+  color: #2D2D2D;
+  border-color: #FC7FB0;
+}
+
+.project-tag:nth-child(6n+6) {
+  background: #B85CFF;  /* Light purple with dark text */
+  color: white;
+  border-color: #B85CFF;
+}
+
+.project-tag:hover {
+  transform: translateY(-1px) scale(1.05);
 }
 
 /* Animations */
@@ -605,6 +695,12 @@ nav .container {
   }
 }
 
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Utility Classes */
 .container {
   max-width: 1400px;
@@ -645,14 +741,30 @@ nav .container {
 .modal-content {
   background: var(--color-bg-secondary);
   border-radius: var(--border-radius-lg);
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-border);
   max-width: 90vw;
   max-height: 90vh;
   width: 1200px;
   height: 80vh;
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced modal contrast for dark mode */
+:root .modal-content {
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Light mode modal styling */
+:root.light-theme .modal-content {
+  border: 2px solid var(--color-border);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .modal-close {
@@ -685,24 +797,52 @@ nav .container {
 }
 
 .modal-image-section {
-  background: var(--color-bg-primary);
+  background: var(--color-bg-secondary);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing-md);
+  border-radius: 0;
+  overflow: hidden;
 }
 
 .modal-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: var(--border-radius);
+  border-radius: 0;
 }
 
 .modal-info-section {
   padding: var(--spacing-lg);
   overflow-y: auto;
+  border-radius: 0;
+}
+
+/* Modal background colors matching project cards */
+.modal-info-section.project-1 {
+  background: linear-gradient(135deg, rgba(252, 169, 209, 0.2) 0%, rgba(222, 15, 102, 0.1) 100%);
+}
+
+.modal-info-section.project-2 {
+  background: linear-gradient(135deg, rgba(254, 206, 78, 0.2) 0%, rgba(255, 193, 7, 0.1) 100%);
+}
+
+.modal-info-section.project-3 {
+  background: linear-gradient(135deg, rgba(41, 218, 182, 0.2) 0%, rgba(0, 200, 170, 0.1) 100%);
+}
+
+.modal-info-section.project-4 {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(90, 8, 234, 0.1) 100%);
+}
+
+.modal-info-section.project-5 {
+  background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 105, 135, 0.1) 100%);
+}
+
+.modal-info-section.project-6 {
+  background: linear-gradient(135deg, rgba(173, 216, 230, 0.2) 0%, rgba(100, 149, 237, 0.1) 100%);
 }
 
 /* Footer */

@@ -100,6 +100,12 @@ class ModernPortfolio {
 
         const project = this.currentProject;
 
+        // Clear existing project classes and add the current project's color class
+        modalInfoSection.className = 'modal-info-section';
+        if (project.modalId) {
+            modalInfoSection.classList.add(`project-${project.modalId}`);
+        }
+
         // Set initial image
         if (project.images && project.images.length > 0) {
             modalImage.src = `assets/images/${project.images[this.currentImageIndex]}`;
