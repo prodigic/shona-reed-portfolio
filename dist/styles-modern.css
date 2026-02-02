@@ -298,6 +298,7 @@ nav .container {
   font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--color-accent);
+  margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-sm);
   letter-spacing: 0.1em;
   text-transform: uppercase;

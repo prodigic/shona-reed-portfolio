@@ -40,6 +40,16 @@ npm run css:watch        # Watch mode for CSS changes
 
 ### Opening in Browser
 
+**IMPORTANT: ALWAYS use the Chrome DevTools MCP server to open managed Chrome instances for testing and debugging.**
+
+Use the DevTools MCP tools (e.g., `mcp__chrome-devtools__new_page`, `mcp__chrome-devtools__navigate_page`) instead of manually opening Chrome. This provides:
+- Automated browser control and inspection
+- Network request monitoring
+- Console message access
+- Screenshot and snapshot capabilities
+- Performance profiling
+
+**Manual browser opening** (use only when DevTools MCP is not needed):
 ```bash
 open -a "Google Chrome" index.html     # macOS Chrome
 open index.html                        # Default browser
