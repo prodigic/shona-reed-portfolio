@@ -7,7 +7,9 @@
     "dev": "concurrently \"npm run css:watch\" \"http-server -p 8080\"",
     "build": "tailwindcss -i ./src/styles/globals.css -o ./dist/styles.css --minify",
     "css:watch": "tailwindcss -i ./src/styles/globals.css -o ./dist/styles.css --watch",
-    "serve": "http-server -p 8080"
+    "serve": "http-server -p 8080",
+    "start": "./start-server.sh",
+    "stop": "./stop-server.sh"
   },
   "keywords": ["portfolio", "tailwindcss", "static-site"],
   "author": "Shona Reed",
