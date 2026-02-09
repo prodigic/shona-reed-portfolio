@@ -305,22 +305,25 @@ class ModernPortfolio {
             });
         }
 
-        // Mobile navigation - using native popover API
-        const mobileMenu = document.getElementById('mobile-menu');
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
-        if (mobileMenu) {
-            // Close menu when a link is clicked
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu when a link is clicked
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.hidePopover();
+                    navLinks.classList.remove('active');
                 });
             });
 
-            // Close menu when scrolling for better UX
+            // Close mobile menu when scrolling
             window.addEventListener('scroll', () => {
-                if (mobileMenu.matches(':popover-open')) {
-                    mobileMenu.hidePopover();
-                }
+                navLinks.classList.remove('active');
             }, { passive: true });
         }
 

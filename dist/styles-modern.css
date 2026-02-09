@@ -264,30 +264,22 @@ nav .container {
 }
 
 @media (max-width: 640px) {
-  /* Mobile menu using native popover API */
   .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-top: 1px solid var(--color-border);
     padding: var(--spacing-sm) 0;
     gap: 0;
-    margin: 0;
-    /* Let popover handle positioning */
-    inset: unset;
-    position-anchor: --nav-toggle;
-    position-area: bottom;
-    width: 100%;
-    max-width: 300px;
+    z-index: 100;
   }
 
-  .nav-links:popover-open {
+  .nav-links.active {
     display: flex;
-  }
-
-  /* Override default popover backdrop */
-  .nav-links::backdrop {
-    background: transparent;
   }
 
   .nav-links li {
@@ -302,7 +294,6 @@ nav .container {
 
   .nav-toggle {
     display: flex;
-    anchor-name: --nav-toggle;
   }
 }
 
