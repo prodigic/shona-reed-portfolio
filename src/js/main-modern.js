@@ -310,13 +310,24 @@ class ModernPortfolio {
         const navLinks = document.querySelector('.nav-links');
 
         if (navToggle && navLinks) {
+            let justClicked = false;
+
             navToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+                justClicked = true;
+
+                // Reset the flag after a short delay
+                setTimeout(() => {
+                    justClicked = false;
+                }, 100);
             });
 
             // Close mobile menu when hamburger button loses focus
+            // (but not immediately after clicking it)
             navToggle.addEventListener('blur', () => {
-                navLinks.classList.remove('active');
+                if (!justClicked) {
+                    navLinks.classList.remove('active');
+                }
             });
 
             // Close mobile menu when a link is clicked
