@@ -344,6 +344,20 @@ class ModernPortfolio {
             });
         }
 
+        // Contact form handler
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('contact-email').value;
+                const message = document.getElementById('contact-message').value;
+                const subject = 'Portfolio Contact from ' + email;
+                const body = encodeURIComponent(message + '\n\nFrom: ' + email);
+                window.location.href = `mailto:ux@shonareed.com?subject=${subject}&body=${body}`;
+                contactForm.reset();
+            });
+        }
+
         // Initialize theme from localStorage
         this.initializeTheme();
 
