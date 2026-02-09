@@ -13,28 +13,28 @@
   }
 }
 
-/* CSS Variables - Dark Theme (Default) with Vibrant Accents */
+/* CSS Variables - Dark Theme (Default) with Neutral Grayscale */
 :root {
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #1a1a1a;
-  --color-bg-tertiary: #2a2a2a;
+  --color-bg-primary: #0d0d0d;
+  --color-bg-secondary: #171717;
+  --color-bg-tertiary: #222222;
   --color-text-primary: #ffffff;
-  --color-text-secondary: #a0a0a0;
-  --color-text-tertiary: #666666;
+  --color-text-secondary: #999999;
+  --color-text-tertiary: #707070;
 
-  /* Vibrant Pratibha-inspired palette */
-  --color-accent: #de0f66;        /* Hot pink primary */
-  --color-accent-secondary: #5a08ea;  /* Deep purple */
-  --color-accent-yellow: #FECE4E;     /* Bright yellow */
-  --color-accent-teal: #29DAB6;       /* Vibrant teal */
-  --color-accent-soft: #FCA9D1;      /* Light pink */
+  /* Neutral grayscale palette */
+  --color-accent: #4a4a4a;        /* Neutral gray primary */
+  --color-accent-secondary: #555555;  /* Slightly darker gray */
+  --color-accent-yellow: #555555;     /* Gray (was yellow) */
+  --color-accent-teal: #555555;       /* Gray (was teal) */
+  --color-accent-soft: #666666;       /* Light gray (was soft pink) */
 
   --color-border: #333333;
-  --color-success: #29DAB6;           /* Use teal for success */
+  --color-success: #555555;           /* Neutral gray for success */
 
-  /* Gradient variables */
-  --gradient-primary: linear-gradient(135deg, #de0f66 0%, #5a08ea 100%);
-  --gradient-soft: linear-gradient(135deg, #FCA9D1 0%, #de0f66 100%);
+  /* Gradient variables - removed */
+  --gradient-primary: none;
+  --gradient-soft: none;
 
   --font-display: 'Playfair Display', serif;
   --font-body: 'IBM Plex Sans', sans-serif;
@@ -58,28 +58,28 @@
   --transition-slow: 0.6s ease-out;
 }
 
-/* Light Theme Variables with Vibrant Accents */
+/* Light Theme Variables with Neutral Grayscale */
 :root.light-theme {
   --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8f9fa;
-  --color-bg-tertiary: #e9ecef;
-  --color-text-primary: #0a0a14;         /* Pratibha's dark navy */
-  --color-text-secondary: #495057;
-  --color-text-tertiary: #6c757d;
+  --color-bg-secondary: #fafafa;
+  --color-bg-tertiary: #f5f5f5;
+  --color-text-primary: #222222;         /* Dark gray (was navy) */
+  --color-text-secondary: #555555;
+  --color-text-tertiary: #777777;
 
-  /* Same vibrant palette for consistency */
-  --color-accent: #de0f66;
-  --color-accent-secondary: #5a08ea;
-  --color-accent-yellow: #FECE4E;
-  --color-accent-teal: #29DAB6;
-  --color-accent-soft: #FCA9D1;
+  /* Same neutral palette for consistency */
+  --color-accent: #4a4a4a;
+  --color-accent-secondary: #555555;
+  --color-accent-yellow: #555555;
+  --color-accent-teal: #555555;
+  --color-accent-soft: #666666;
 
-  --color-border: #dee2e6;
-  --color-success: #29DAB6;
+  --color-border: #e0e0e0;
+  --color-success: #555555;
 
-  /* Lighter gradients for light theme */
-  --gradient-primary: linear-gradient(135deg, #de0f66 0%, #5a08ea 100%);
-  --gradient-soft: linear-gradient(135deg, #FCA9D1 0%, #de0f66 100%);
+  /* No gradients for light theme */
+  --gradient-primary: none;
+  --gradient-soft: none;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -338,9 +338,7 @@ nav .container {
   overflow: hidden;
   padding-top: 160px;
   padding-bottom: var(--spacing-xl);
-  background: radial-gradient(ellipse at 30% 20%, rgba(222, 15, 102, 0.15) 0%, transparent 70%),
-              radial-gradient(ellipse at 70% 80%, rgba(90, 8, 234, 0.1) 0%, transparent 70%),
-              var(--color-bg-primary);
+  background: var(--color-bg-primary);
 }
 
 .hero .container {
@@ -372,10 +370,7 @@ nav .container {
   font-weight: 700;
   line-height: 0.9;
   margin-bottom: var(--spacing-md);
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-text-primary);
 }
 
 .hero-description {
@@ -406,15 +401,17 @@ nav .container {
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
-  color: white;
-  box-shadow: var(--shadow-sm);
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  border: 2px solid var(--color-text-primary);
+  box-shadow: none;
 }
 
 .btn-primary:hover {
-  background: var(--gradient-soft);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--shadow-md);
+  background: var(--color-text-secondary);
+  border-color: var(--color-text-secondary);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-secondary {
@@ -571,30 +568,8 @@ nav .container {
   padding: var(--spacing-lg);
 }
 
-/* Pastel Background Colors for Each Card */
-.project-card:nth-child(1) {
-  background: linear-gradient(135deg, rgba(252, 169, 209, 0.2) 0%, rgba(222, 15, 102, 0.1) 100%);
-}
-
-.project-card:nth-child(2) {
-  background: linear-gradient(135deg, rgba(254, 206, 78, 0.2) 0%, rgba(255, 193, 7, 0.1) 100%);
-}
-
-.project-card:nth-child(3) {
-  background: linear-gradient(135deg, rgba(41, 218, 182, 0.2) 0%, rgba(0, 200, 170, 0.1) 100%);
-}
-
-.project-card:nth-child(4) {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(90, 8, 234, 0.1) 100%);
-}
-
-.project-card:nth-child(5) {
-  background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 105, 135, 0.1) 100%);
-}
-
-.project-card:nth-child(6) {
-  background: linear-gradient(135deg, rgba(173, 216, 230, 0.2) 0%, rgba(100, 149, 237, 0.1) 100%);
-}
+/* Neutral Background Colors for Cards - Removed Pastel Gradients */
+/* All cards now use base --color-bg-secondary */
 
 .project-card:hover {
   transform: translateY(-8px);
@@ -647,55 +622,22 @@ nav .container {
 }
 
 .project-tag {
-  background: var(--color-bg-tertiary);
+  background: transparent;
   color: var(--color-text-secondary);
   padding: 4px 12px;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
   border: 1px solid var(--color-border);
   transition: var(--transition-fast);
 }
 
-/* Accessible vibrant tag variants - high contrast combinations */
-.project-tag:nth-child(1) {
-  background: var(--color-accent);
-  color: white;
-  border-color: var(--color-accent);
-}
-
-.project-tag:nth-child(2) {
-  background: #E6A500;  /* Darker yellow for better contrast */
-  color: white;
-  border-color: #E6A500;
-}
-
-.project-tag:nth-child(3) {
-  background: #1DB88A;  /* Darker teal for better contrast */
-  color: white;
-  border-color: #1DB88A;
-}
-
-.project-tag:nth-child(4) {
-  background: var(--color-accent-secondary);
-  color: white;
-  border-color: var(--color-accent-secondary);
-}
-
-.project-tag:nth-child(5) {
-  background: #FC7FB0;  /* Light pink with dark text */
-  color: #2D2D2D;
-  border-color: #FC7FB0;
-}
-
-.project-tag:nth-child(6n+6) {
-  background: #B85CFF;  /* Light purple with dark text */
-  color: white;
-  border-color: #B85CFF;
-}
-
+/* Neutral tag styling - no nth-child color variants */
 .project-tag:hover {
-  transform: translateY(-1px) scale(1.05);
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  transform: none;
 }
 
 /* Animations */
@@ -983,30 +925,8 @@ nav .container {
   border-radius: 0;
 }
 
-/* Modal background colors matching project cards */
-.modal-info-section.project-1 {
-  background: linear-gradient(135deg, rgba(252, 169, 209, 0.2) 0%, rgba(222, 15, 102, 0.1) 100%);
-}
-
-.modal-info-section.project-2 {
-  background: linear-gradient(135deg, rgba(254, 206, 78, 0.2) 0%, rgba(255, 193, 7, 0.1) 100%);
-}
-
-.modal-info-section.project-3 {
-  background: linear-gradient(135deg, rgba(41, 218, 182, 0.2) 0%, rgba(0, 200, 170, 0.1) 100%);
-}
-
-.modal-info-section.project-4 {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(90, 8, 234, 0.1) 100%);
-}
-
-.modal-info-section.project-5 {
-  background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 105, 135, 0.1) 100%);
-}
-
-.modal-info-section.project-6 {
-  background: linear-gradient(135deg, rgba(173, 216, 230, 0.2) 0%, rgba(100, 149, 237, 0.1) 100%);
-}
+/* Modal background colors - removed gradient theming, using neutral styling */
+/* All modals now use base .modal-info-section styling */
 
 /* Book Section */
 .book {
