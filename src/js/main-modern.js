@@ -314,6 +314,11 @@ class ModernPortfolio {
                 navLinks.classList.toggle('active');
             });
 
+            // Close mobile menu when hamburger button loses focus
+            navToggle.addEventListener('blur', () => {
+                navLinks.classList.remove('active');
+            });
+
             // Close mobile menu when a link is clicked
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
