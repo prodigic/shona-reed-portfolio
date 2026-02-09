@@ -305,31 +305,23 @@ class ModernPortfolio {
             });
         }
 
-        // Mobile navigation toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        // Mobile navigation - using native popover API
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        if (navToggle && navLinks) {
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-
-            // Close mobile menu when a link is clicked
+        if (mobileMenu) {
+            // Close menu when a link is clicked
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
+                    mobileMenu.hidePopover();
                 });
             });
 
-            // Close mobile menu when scrolling
-            let lastScrollY = window.scrollY;
-
-            setInterval(() => {
-                if (window.scrollY !== lastScrollY && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
+            // Close menu when scrolling for better UX
+            window.addEventListener('scroll', () => {
+                if (mobileMenu.matches(':popover-open')) {
+                    mobileMenu.hidePopover();
                 }
-                lastScrollY = window.scrollY;
-            }, 50);
+            }, { passive: true });
         }
 
         // Theme toggle functionality
