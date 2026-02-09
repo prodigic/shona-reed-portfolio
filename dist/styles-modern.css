@@ -254,14 +254,23 @@ nav .container {
   flex-direction: column;
   cursor: pointer;
   gap: 4px;
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
   padding: 8px;
-  outline: none;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.nav-toggle:hover {
+  background: none !important;
+  border: none !important;
+  transform: none !important;
 }
 
 .nav-toggle:focus {
-  outline: none;
+  outline: none !important;
+  border: none !important;
 }
 
 .nav-toggle span {
