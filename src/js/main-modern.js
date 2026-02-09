@@ -310,22 +310,15 @@ class ModernPortfolio {
         const navLinks = document.querySelector('.nav-links');
 
         if (navToggle && navLinks) {
-            let justClicked = false;
-
             navToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
-                justClicked = true;
-
-                // Reset the flag after a short delay
-                setTimeout(() => {
-                    justClicked = false;
-                }, 100);
             });
 
-            // Close mobile menu when hamburger button loses focus
-            // (but not immediately after clicking it)
-            navToggle.addEventListener('blur', () => {
-                if (!justClicked) {
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') &&
+                    !navLinks.contains(e.target) &&
+                    !navToggle.contains(e.target)) {
                     navLinks.classList.remove('active');
                 }
             });
