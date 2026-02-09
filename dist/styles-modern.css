@@ -254,6 +254,14 @@ nav .container {
   flex-direction: column;
   cursor: pointer;
   gap: 4px;
+  background: none;
+  border: none;
+  padding: 8px;
+  outline: none;
+}
+
+.nav-toggle:focus {
+  outline: none;
 }
 
 .nav-toggle span {
