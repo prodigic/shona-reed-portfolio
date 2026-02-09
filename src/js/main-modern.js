@@ -380,7 +380,7 @@ class ModernPortfolio {
     }
 
     updateActiveNavLink() {
-        const sections = ['about', 'skills', 'work', 'contact'];
+        const sections = ['about', 'work', 'thoughts', 'book', 'contact'];
         const scrollPos = window.scrollY + 100;
 
         sections.forEach(sectionId => {
