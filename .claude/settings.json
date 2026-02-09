@@ -1,0 +1,39 @@
+{
+  "allowedPrompts": [
+    {
+      "type": "tool",
+      "toolName": "Edit",
+      "prompt": "*"
+    },
+    {
+      "type": "tool",
+      "toolName": "Write",
+      "prompt": "*"
+    },
+    {
+      "type": "tool",
+      "toolName": "Bash",
+      "prompt": "gh *"
+    },
+    {
+      "type": "tool",
+      "toolName": "Bash",
+      "prompt": "git *"
+    },
+    {
+      "type": "tool",
+      "toolName": "Bash",
+      "prompt": "chmod *"
+    },
+    {
+      "type": "tool",
+      "toolName": "Bash",
+      "prompt": "ls *"
+    },
+    {
+      "type": "tool",
+      "toolName": "Bash",
+      "prompt": "mkdir *"
+    }
+  ]
+}

@@ -973,6 +973,23 @@ nav .container {
   background: linear-gradient(135deg, rgba(173, 216, 230, 0.2) 0%, rgba(100, 149, 237, 0.1) 100%);
 }
 
+/* Book Section */
+.book {
+  padding: var(--spacing-xl) 0;
+  background: var(--color-bg-secondary);
+}
+
+.book .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.book-content {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
 /* Thoughts Section */
 .thoughts {
   padding: var(--spacing-xl) 0;

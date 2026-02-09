@@ -311,8 +311,25 @@ class ModernPortfolio {
 
         if (navToggle && navLinks) {
             navToggle.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.classList.toggle('active');
             });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close mobile menu when scrolling
+            let lastScrollY = window.scrollY;
+
+            setInterval(() => {
+                if (window.scrollY !== lastScrollY && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+                lastScrollY = window.scrollY;
+            }, 50);
         }
 
         // Theme toggle functionality
@@ -350,28 +367,14 @@ class ModernPortfolio {
     }
 
     setupNavigation() {
-        const nav = document.querySelector('nav');
-        let lastScrollY = window.scrollY;
-
+        // Update active navigation link on scroll
         window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-
-            // Hide/show navigation on scroll
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-
-            lastScrollY = currentScrollY;
-
-            // Update active navigation link
             this.updateActiveNavLink();
         });
     }
 
     updateActiveNavLink() {
-        const sections = ['work', 'about', 'contact'];
+        const sections = ['about', 'work', 'thoughts', 'contact'];
         const scrollPos = window.scrollY + 100;
 
         sections.forEach(sectionId => {
@@ -405,25 +408,19 @@ class ModernPortfolio {
             }
         });
 
-        // Fade in animations for elements
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        // Section reveal animations
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animationName = 'fadeInUp';
-                    entry.target.style.animationDuration = '0.8s';
-                    entry.target.style.animationFillMode = 'both';
+                    entry.target.classList.add('section-visible');
+                    sectionObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
-        // Observe sections for animation
-        document.querySelectorAll('.about, .section-header').forEach(el => {
-            observer.observe(el);
+        document.querySelectorAll('.about, .projects, .thoughts, .book, .contact').forEach(section => {
+            section.classList.add('section-reveal');
+            sectionObserver.observe(section);
         });
     }
 
@@ -460,12 +457,57 @@ class ModernPortfolio {
             .hero-profile {
                 animation: fadeInUp 0.8s ease-out 0.3s both;
             }
+
+            /* Section reveal animations */
+            .section-reveal {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                            transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .section-reveal.section-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .section-reveal .section-header,
+            .section-reveal .about-content,
+            .section-reveal .thoughts-content,
+            .section-reveal .book-content,
+            .section-reveal .contact-content {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                            transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .section-reveal.section-visible .section-header {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.15s;
+            }
+
+            .section-reveal.section-visible .about-content,
+            .section-reveal.section-visible .thoughts-content,
+            .section-reveal.section-visible .book-content,
+            .section-reveal.section-visible .contact-content {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.3s;
+            }
+
+            .section-reveal.section-visible .project-card {
+                opacity: 1;
+                transform: translateY(0);
+            }
         `;
         document.head.appendChild(style);
 
         // Stagger project card animations
         document.querySelectorAll('.project-card').forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
+            card.style.transitionDelay = `${0.2 + index * 0.1}s`;
         });
     }
 

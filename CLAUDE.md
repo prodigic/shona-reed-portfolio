@@ -55,6 +55,16 @@ open -a "Google Chrome" index.html     # macOS Chrome
 open index.html                        # Default browser
 ```
 
+**Closing the DevTools managed browser:**
+```bash
+pkill -f "chrome-devtools-mcp/chrome-profile"
+```
+
+This command kills all Chrome processes associated with the DevTools MCP managed browser. Use this when:
+- Stopping the development server
+- Cleaning up browser instances after testing
+- Chrome DevTools browser becomes unresponsive
+
 Note: Some features (JSON loading) require a server due to CORS restrictions.
 
 ## Architecture Overview
