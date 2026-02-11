@@ -12,6 +12,7 @@ class ModernPortfolio {
     async init() {
         await this.loadProjects();
         this.renderProjectGrid();
+        this.renderWorkThumbnails();
         this.setupEventListeners();
         this.setupNavigation();
         this.setupScrollEffects();
@@ -64,6 +65,55 @@ class ModernPortfolio {
 
         // Intersection Observer for animation on scroll
         this.observeProjectCards();
+    }
+
+    renderWorkThumbnails() {
+        const thumbnailContainer = document.getElementById('work-thumbnails');
+        if (!thumbnailContainer) return;
+
+        const featuredProjects = this.projects.slice(0, 3);
+
+        thumbnailContainer.innerHTML = featuredProjects.map(project => `
+            <div class="work-thumbnail-card" data-project-id="${project.id}">
+                <div class="work-thumbnail-image">
+                    <img src="assets/images/${project.thumbnail}"
+                         alt="${project.title}"
+                         loading="lazy">
+                </div>
+                <div class="work-thumbnail-content">
+                    <div class="work-thumbnail-role">${project.role}</div>
+                    <h3 class="work-thumbnail-title">${project.client}</h3>
+                </div>
+            </div>
+        `).join('');
+
+        thumbnailContainer.addEventListener('click', (e) => {
+            const card = e.target.closest('.work-thumbnail-card');
+            if (card) {
+                const projectId = card.getAttribute('data-project-id');
+                this.expandWorkSection();
+                setTimeout(() => {
+                    this.openModal(projectId);
+                }, 300);
+            }
+        });
+    }
+
+    expandWorkSection() {
+        const workToggle = document.getElementById('work-toggle');
+        const workContent = document.getElementById('work-content');
+        const workSummary = document.getElementById('work-summary');
+        const workToggleTop = document.getElementById('work-toggle-top');
+        const workToggleBottom = document.getElementById('work-toggle-bottom');
+
+        if (workToggle && workContent && workSummary) {
+            workToggle.setAttribute('aria-expanded', 'true');
+            workContent.setAttribute('aria-hidden', 'false');
+            workSummary.setAttribute('aria-hidden', 'true');
+
+            if (workToggleTop) workToggleTop.setAttribute('aria-expanded', 'true');
+            if (workToggleBottom) workToggleBottom.setAttribute('aria-expanded', 'true');
+        }
     }
 
     observeProjectCards() {
@@ -344,17 +394,149 @@ class ModernPortfolio {
             });
         }
 
-        // Contact form handler
+        // SR logo - scroll to top
+        const logoLink = document.querySelector('.nav-logo');
+        if (logoLink) {
+            logoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Resume expand/collapse toggle
+        const resumeToggle = document.getElementById('resume-toggle');
+        const resumeToggleTop = document.getElementById('resume-toggle-top');
+        const resumeToggleBottom = document.getElementById('resume-toggle-bottom');
+        const resumeContent = document.getElementById('resume-content');
+        const resumeSummary = document.getElementById('resume-summary');
+
+        const toggleResume = () => {
+            const isExpanded = resumeToggle.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                // Collapse - show summary, hide full content
+                resumeToggle.setAttribute('aria-expanded', 'false');
+                resumeContent.setAttribute('aria-hidden', 'true');
+                resumeSummary.setAttribute('aria-hidden', 'false');
+                resumeToggle.querySelector('.toggle-text').textContent = 'View Full Resume';
+                resumeToggle.classList.remove('expanded');
+
+                // Scroll back to resume section top
+                const resumeSection = document.getElementById('resume');
+                if (resumeSection) {
+                    resumeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                // Expand - hide summary, show full content
+                resumeToggle.setAttribute('aria-expanded', 'true');
+                resumeContent.setAttribute('aria-hidden', 'false');
+                resumeSummary.setAttribute('aria-hidden', 'true');
+                resumeToggle.querySelector('.toggle-text').textContent = 'Hide Resume';
+                resumeToggle.classList.add('expanded');
+            }
+        };
+
+        if (resumeToggle && resumeContent && resumeSummary) {
+            resumeToggle.addEventListener('click', toggleResume);
+        }
+
+        if (resumeToggleTop) {
+            resumeToggleTop.addEventListener('click', toggleResume);
+        }
+
+        if (resumeToggleBottom) {
+            resumeToggleBottom.addEventListener('click', toggleResume);
+        }
+
+        // Work expand/collapse toggle
+        const workToggle = document.getElementById('work-toggle');
+        const workToggleTop = document.getElementById('work-toggle-top');
+        const workToggleBottom = document.getElementById('work-toggle-bottom');
+        const workContent = document.getElementById('work-content');
+        const workSummary = document.getElementById('work-summary');
+
+        const toggleWork = () => {
+            const isExpanded = workToggle.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                // Collapse - show summary, hide full content
+                workToggle.setAttribute('aria-expanded', 'false');
+                workContent.setAttribute('aria-hidden', 'true');
+                workSummary.setAttribute('aria-hidden', 'false');
+                workToggle.querySelector('.toggle-text').textContent = 'View All Projects';
+                workToggle.classList.remove('expanded');
+
+                // Scroll back to work section top
+                const workSection = document.getElementById('work');
+                if (workSection) {
+                    workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                // Expand - hide summary, show full content
+                workToggle.setAttribute('aria-expanded', 'true');
+                workContent.setAttribute('aria-hidden', 'false');
+                workSummary.setAttribute('aria-hidden', 'true');
+                workToggle.querySelector('.toggle-text').textContent = 'Hide Projects';
+                workToggle.classList.add('expanded');
+            }
+        };
+
+        if (workToggle && workContent && workSummary) {
+            workToggle.addEventListener('click', toggleWork);
+        }
+
+        if (workToggleTop) {
+            workToggleTop.addEventListener('click', toggleWork);
+        }
+
+        if (workToggleBottom) {
+            workToggleBottom.addEventListener('click', toggleWork);
+        }
+
+        // Contact form handler with visual feedback
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
+
                 const email = document.getElementById('contact-email').value;
                 const message = document.getElementById('contact-message').value;
-                const subject = 'Portfolio Contact from ' + email;
-                const body = encodeURIComponent(message + '\n\nFrom: ' + email);
-                window.location.href = `mailto:ux@shonareed.com?subject=${subject}&body=${body}`;
-                contactForm.reset();
+                const statusDiv = document.getElementById('form-status');
+                const submitButton = contactForm.querySelector('.btn-submit');
+
+                // Validate fields
+                if (!email || !message) {
+                    statusDiv.textContent = 'Please fill in all required fields';
+                    statusDiv.classList.add('show', 'error');
+                    setTimeout(() => {
+                        statusDiv.classList.remove('show', 'error');
+                    }, 4000);
+                    return;
+                }
+
+                // Show success message and trigger mailto
+                statusDiv.textContent = 'Opening your email client...';
+                statusDiv.classList.add('show', 'success');
+
+                // Disable button temporarily
+                submitButton.disabled = true;
+                const originalText = submitButton.querySelector('span').textContent;
+                submitButton.querySelector('span').textContent = 'Sending...';
+
+                // Trigger mailto with a small delay for visual feedback
+                setTimeout(() => {
+                    const subject = 'Portfolio Contact from ' + email;
+                    const body = encodeURIComponent(message + '\n\nFrom: ' + email);
+                    window.location.href = `mailto:ux@shonareed.com?subject=${subject}&body=${body}`;
+
+                    // Reset form after a delay
+                    setTimeout(() => {
+                        contactForm.reset();
+                        submitButton.disabled = false;
+                        submitButton.querySelector('span').textContent = originalText;
+                        statusDiv.classList.remove('show', 'success');
+                    }, 1000);
+                }, 500);
             });
         }
 
@@ -394,8 +576,19 @@ class ModernPortfolio {
     }
 
     updateActiveNavLink() {
-        const sections = ['about', 'work', 'thoughts', 'book', 'contact'];
+        const sections = ['about', 'resume', 'work', 'thoughts', 'book', 'contact'];
         const scrollPos = window.scrollY + 100;
+
+        // If scrolled to bottom of page, highlight the last section
+        const atBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 50);
+        if (atBottom) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            const lastLink = document.querySelector(`a[href="#${sections[sections.length - 1]}"]`);
+            if (lastLink) lastLink.classList.add('active');
+            return;
+        }
 
         sections.forEach(sectionId => {
             const section = document.getElementById(sectionId);

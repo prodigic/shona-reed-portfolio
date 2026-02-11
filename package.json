@@ -11,7 +11,14 @@
     "start": "./start-server.sh",
     "stop": "./stop-server.sh"
   },
-  "keywords": ["portfolio", "tailwindcss", "static-site"],
+  "keywords": [
+    "portfolio",
+    "tailwindcss",
+    "static-site"
+  ],
   "author": "Shona Reed",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "marked": "^17.0.1"
+  }
 }
