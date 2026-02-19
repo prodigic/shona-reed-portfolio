@@ -364,7 +364,7 @@ nav .container {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.25;
+  opacity: 0.3;
   z-index: 0;
 }
 
@@ -478,6 +478,12 @@ nav .container {
   line-height: 1.6;
   color: var(--color-text-secondary);
   margin: 0;
+}
+
+.hero-highlight {
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 1.12em;
 }
 
 .hero-cta {
@@ -1281,7 +1287,7 @@ nav .container {
 /* Book Section */
 .book {
   padding: var(--spacing-xl) 0;
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-primary);
   scroll-margin-top: 100px;
 }
 
@@ -1291,9 +1297,13 @@ nav .container {
   padding: 0 var(--spacing-md);
 }
 
+.book .section-header {
+  margin-bottom: var(--spacing-sm);
+}
+
 .book-content {
   text-align: center;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-md) 0;
 }
 
 .progress-wrapper {
@@ -1301,7 +1311,7 @@ nav .container {
   align-items: center;
   gap: var(--spacing-sm);
   max-width: 600px;
-  margin: 150px auto 0;
+  margin: var(--spacing-md) auto 0;
 }
 
 .progress-track {
@@ -1380,18 +1390,21 @@ nav .container {
   transition: background 0.3s ease;
 }
 
-/* First marker is active */
-.progress-marker:nth-child(1) .marker-icon {
+/* Active markers (progress reached) */
+.progress-marker:nth-child(1) .marker-icon,
+.progress-marker:nth-child(2) .marker-icon {
   border-color: var(--color-accent);
   background: var(--color-accent);
 }
 
-.progress-marker:nth-child(1) .marker-icon svg {
+.progress-marker:nth-child(1) .marker-icon svg,
+.progress-marker:nth-child(2) .marker-icon svg {
   color: #ffffff;
   stroke: #ffffff;
 }
 
-.progress-marker:nth-child(1) .marker-line {
+.progress-marker:nth-child(1) .marker-line,
+.progress-marker:nth-child(2) .marker-line {
   background: var(--color-accent);
 }
 
@@ -1430,7 +1443,7 @@ nav .container {
 /* Contact Section */
 .contact {
   padding: var(--spacing-xl) 0;
-  background: var(--color-bg-primary);
+  background: var(--color-bg-secondary);
   scroll-margin-top: 100px;
 }
 
@@ -1538,7 +1551,7 @@ footer .container {
 
 .resume-section {
   padding: var(--spacing-xl) 0;
-  background: var(--color-bg-primary);
+  background: var(--color-bg-secondary);
   scroll-margin-top: 100px;
 }
 

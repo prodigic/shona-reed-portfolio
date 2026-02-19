@@ -20,5 +20,8 @@
   "license": "ISC",
   "dependencies": {
     "marked": "^17.0.1"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
