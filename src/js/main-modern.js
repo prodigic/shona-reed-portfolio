@@ -576,7 +576,7 @@ class ModernPortfolio {
     }
 
     updateActiveNavLink() {
-        const sections = ['about', 'resume', 'work', 'thoughts', 'book', 'contact'];
+        const sections = ['resume', 'work', 'thoughts', 'book', 'contact'];
         const scrollPos = window.scrollY + 100;
 
         // If scrolled to bottom of page, highlight the last section
