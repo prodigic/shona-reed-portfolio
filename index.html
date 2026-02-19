@@ -12,10 +12,15 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" class="nav-logo">SR</a>
+            <a href="#" class="nav-logo" aria-label="Shona Reed">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M17.00 1.50 L18.70 4.11 L21.01 2.03 L21.97 4.99 L24.75 3.58 L24.91 6.69 L27.96 6.04 L27.31 9.09 L30.42 9.25 L29.01 12.02 L31.97 12.99 L29.89 15.30 L32.50 17.00 L29.89 18.70 L31.97 21.01 L29.01 21.98 L30.42 24.75 L27.31 24.91 L27.96 27.96 L24.91 27.31 L24.75 30.42 L21.97 29.01 L21.01 31.97 L18.70 29.89 L17.00 32.50 L15.30 29.89 L12.99 31.97 L12.02 29.01 L9.25 30.42 L9.09 27.31 L6.04 27.96 L6.69 24.91 L3.58 24.75 L4.99 21.97 L2.03 21.01 L4.11 18.70 L1.50 17.00 L4.11 15.30 L2.03 12.99 L4.99 12.02 L3.58 9.25 L6.69 9.09 L6.04 6.04 L9.09 6.69 L9.25 3.58 L12.02 4.99 L12.99 2.03 L15.30 4.11 Z" fill="#9A3407"/>
+                    <text x="17" y="22" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-weight="900" font-size="13" stroke="white" stroke-width="0.5" letter-spacing="2" fill="white">SR</text>
+                </svg>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#resume" class="nav-link">Experience</a></li>
                 <li><a href="#work" class="nav-link">Work</a></li>
                 <li><a href="#thoughts" class="nav-link">Thoughts</a></li>
                 <li><a href="#book" class="nav-link">Book</a></li>
@@ -49,34 +54,28 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-subtitle">Research Leader</div>
+            <div class="hero-name">
                 <h1 class="hero-title">Shona Reed</h1>
-                <p class="hero-description">
-                    I craft exceptional digital experiences through research-driven design.
-                    From early-stage startups to Fortune 500 companies, I help teams build
-                    products people genuinely love to use.
-                </p>
-                <div class="hero-cta">
-                    <a href="#work" class="btn btn-primary">View Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <div class="hero-subtitle">UX Research Leader</div>
+            </div>
+            <div class="hero-body">
+                <div class="hero-profile">
+                    <div class="profile-slideshow">
+                        <img src="assets/images/profile-1.jpg" class="profile-slide" alt="Shona Reed">
+                        <img src="assets/images/profile-2.jpg" class="profile-slide" alt="Shona Reed">
+                        <img src="assets/images/profile-3.jpg" class="profile-slide" alt="Shona Reed">
+                        <img src="assets/images/profile-4.jpg" class="profile-slide" alt="Shona Reed">
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-description">I develop high-performing research teams, design scaleable operations, and help organizations to make critical decisions with confidence.</h2>
                 </div>
             </div>
-            <div class="hero-profile">
-                <img src="assets/images/hi_res.png" alt="Shona Reed" class="profile-image">
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/shonar" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="mailto:ux@shonareed.com" class="social-link" aria-label="Email">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.781L12 10.845l9.583-7.024h.781c.904 0 1.636.732 1.636 1.636z"/>
-                        </svg>
-                    </a>
-                </div>
+            <div class="hero-cta">
+                <a href="#work" class="btn btn-primary">View Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
     </section>
@@ -111,7 +110,7 @@
     <section id="resume" class="resume-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Resume</h2>
+                <h2 class="section-title">Experience</h2>
                 <p class="section-subtitle">15+ years leading UX research and design projects</p>
             </div>
 
@@ -121,12 +120,14 @@
                     <div class="summary-card">
                         <div class="summary-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
+                                <rect x="2" y="7" width="7" height="14"></rect>
+                                <rect x="9" y="3" width="7" height="18"></rect>
+                                <rect x="16" y="10" width="6" height="11"></rect>
+                                <line x1="2" y1="21" x2="22" y2="21"></line>
                             </svg>
                         </div>
-                        <h3>Experience</h3>
-                        <p>15+ years in UX research and design, from startups to Fortune 500 companies</p>
+                        <h3>Industries</h3>
+                        <p>Spanning startups, Fortune 500 companies, government agencies, academic institutions, and museums.</p>
                     </div>
                     <div class="summary-card">
                         <div class="summary-icon">

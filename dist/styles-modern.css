@@ -23,18 +23,18 @@
   --color-text-tertiary: #666666;
 
   /* Teal accent palette from shonareed.com */
-  --color-accent: #58A6A2;        /* Teal primary */
-  --color-accent-secondary: #58A6A2;  /* Teal secondary */
-  --color-accent-yellow: #58A6A2;     /* Teal (unified) */
-  --color-accent-teal: #58A6A2;       /* Teal */
-  --color-accent-soft: #7BB5B0;      /* Light teal */
+  --color-accent: #3D8C88;        /* Teal primary */
+  --color-accent-secondary: #3D8C88;  /* Teal secondary */
+  --color-accent-yellow: #3D8C88;     /* Teal (unified) */
+  --color-accent-teal: #3D8C88;       /* Teal */
+  --color-accent-soft: #5C9E99;      /* Light teal */
 
   --color-border: #333333;
-  --color-success: #58A6A2;           /* Teal for success */
+  --color-success: #3D8C88;           /* Teal for success */
 
   /* Gradient variables - using teal */
-  --gradient-primary: linear-gradient(135deg, #58A6A2 0%, #4A9695 100%);
-  --gradient-soft: linear-gradient(135deg, #7BB5B0 0%, #58A6A2 100%);
+  --gradient-primary: linear-gradient(135deg, #3D8C88 0%, #327A77 100%);
+  --gradient-soft: linear-gradient(135deg, #5C9E99 0%, #3D8C88 100%);
 
   --font-display: 'IBM Plex Sans', sans-serif;
   --font-body: 'IBM Plex Sans', sans-serif;
@@ -68,18 +68,18 @@
   --color-text-tertiary: #6c757d;
 
   /* Same teal palette for consistency */
-  --color-accent: #58A6A2;
-  --color-accent-secondary: #58A6A2;
-  --color-accent-yellow: #58A6A2;
-  --color-accent-teal: #58A6A2;
-  --color-accent-soft: #7BB5B0;
+  --color-accent: #3D8C88;
+  --color-accent-secondary: #3D8C88;
+  --color-accent-yellow: #3D8C88;
+  --color-accent-teal: #3D8C88;
+  --color-accent-soft: #5C9E99;
 
   --color-border: #dee2e6;
-  --color-success: #58A6A2;
+  --color-success: #3D8C88;
 
   /* Lighter gradients for light theme - teal */
-  --gradient-primary: linear-gradient(135deg, #58A6A2 0%, #4A9695 100%);
-  --gradient-soft: linear-gradient(135deg, #7BB5B0 0%, #58A6A2 100%);
+  --gradient-primary: linear-gradient(135deg, #3D8C88 0%, #327A77 100%);
+  --gradient-soft: linear-gradient(135deg, #5C9E99 0%, #3D8C88 100%);
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -171,12 +171,10 @@ nav .container {
 }
 
 .nav-logo {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--color-text-primary);
   text-decoration: none;
-  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .nav-links {
@@ -263,6 +261,15 @@ nav .container {
   transform: rotate(-180deg) scale(0.8);
 }
 
+/* Light theme: show sketch faintly, use white overlay instead of dark */
+:root.light-theme .hero::before {
+  opacity: 0.08;
+}
+
+:root.light-theme .hero-overlay {
+  background: rgba(255, 255, 255, 0.6);
+}
+
 /* Mobile Navigation */
 .nav-toggle {
   display: none;
@@ -334,27 +341,110 @@ nav .container {
 
 /* Hero Section */
 .hero {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: 160px;
+  padding-top: 120px;
   padding-bottom: var(--spacing-xl);
   background: radial-gradient(ellipse at 30% 20%, rgba(222, 15, 102, 0.15) 0%, transparent 70%),
               radial-gradient(ellipse at 70% 80%, rgba(90, 8, 234, 0.1) 0%, transparent 70%),
               var(--color-bg-primary);
 }
 
+/* Hero background — fixed greyscale sketch image via pseudo-element */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/hero-bg-bw.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+/* Grey transparent overlay over background image */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
 .hero .container {
-  max-width: 1400px;
+  max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: var(--spacing-md);
+  position: relative;
+  z-index: 2;
 }
+
+.hero-name {
+  text-align: center;
+  width: 100%;
+}
+
+/* Circle + description text side by side, centered */
+.hero-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.hero-profile {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  animation: fadeInRight 0.8s ease-out 0.3s both;
+}
+
+.hero-content {
+  flex: 0 1 500px;
+  display: flex;
+  align-items: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.profile-slideshow {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.profile-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  opacity: 0;
+  animation: profile-fade 24s infinite;
+  filter: grayscale(1) contrast(1.35) brightness(1.1);
+}
+
+.profile-slide:nth-child(1) { animation-delay: 0s; }
+.profile-slide:nth-child(2) { animation-delay: 6s; }
+.profile-slide:nth-child(3) { animation-delay: 12s; }
+.profile-slide:nth-child(4) { animation-delay: 18s; }
 
 .hero-content {
   animation: fadeInUp 0.8s ease-out;
@@ -364,17 +454,17 @@ nav .container {
   font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--color-accent);
-  margin-top: 0;
-  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+  margin-bottom: 0;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
-  line-height: 0.95;
-  margin-bottom: var(--spacing-md);
+  line-height: 1;
+  margin-bottom: 0;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -383,16 +473,19 @@ nav .container {
 }
 
 .hero-description {
-  font-size: 1.25rem;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 400;
   line-height: 1.6;
   color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-lg);
-  max-width: 500px;
+  margin: 0;
 }
 
 .hero-cta {
   display: flex;
   gap: var(--spacing-sm);
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
 }
 
 .btn {
@@ -432,24 +525,12 @@ nav .container {
   border-color: var(--color-accent);
 }
 
-/* Hero Profile */
-.hero-profile {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: fadeInRight 0.8s ease-out 0.3s both;
-}
 
-.profile-image {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--color-border);
-  box-shadow: var(--shadow-lg);
-  margin-bottom: var(--spacing-md);
-  transition: var(--transition-medium);
+@keyframes profile-fade {
+  0%, 100%  { opacity: 0; }
+  8%        { opacity: 1; }
+  25%       { opacity: 1; }
+  33%       { opacity: 0; }
 }
 
 .profile-image:hover {
@@ -883,13 +964,45 @@ nav .container {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  .hero .container {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    text-align: center;
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: 90px;
+    padding-bottom: var(--spacing-lg);
   }
 
+  /* Fixed background doesn't work on iOS Safari — use scroll instead */
+  .hero::before {
+    background-attachment: scroll;
+    background-size: contain;
+  }
+
+  .hero .container {
+    gap: var(--spacing-sm);
+  }
+
+  .hero-body {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .hero-content {
+    flex: 0 1 auto;
+    width: 100%;
+  }
+
+  .profile-slideshow {
+    width: 130px;
+    height: 130px;
+    aspect-ratio: unset;
+  }
+
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
