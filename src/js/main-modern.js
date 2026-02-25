@@ -12,7 +12,6 @@ class ModernPortfolio {
     async init() {
         await this.loadProjects();
         this.renderProjectGrid();
-        this.renderWorkThumbnails();
         this.setupEventListeners();
         this.setupNavigation();
         this.setupScrollEffects();
@@ -21,7 +20,7 @@ class ModernPortfolio {
 
     async loadProjects() {
         try {
-            const response = await fetch('data/projects.json');
+            const response = await fetch('data/projects.json?v=' + Date.now());
             this.projects = await response.json();
         } catch (error) {
             console.error('Error loading projects:', error);
@@ -29,91 +28,55 @@ class ModernPortfolio {
         }
     }
 
+    buildCardHTML(project) {
+        const backTags = project.tags.map(t => `<span class="card-back-tag">${t}</span>`).join('');
+
+        return `
+            <div class="playing-card-inner">
+                <div class="playing-card-face playing-card-front">
+                    <div class="card-image-area">
+                        <img src="assets/images/${project.thumbnail}" alt="${project.title}" loading="lazy">
+                    </div>
+                    <div class="card-front-info">
+                        <div class="card-front-role">${project.role}</div>
+                        <h3 class="card-front-title">${project.client}</h3>
+                    </div>
+                </div>
+                <div class="playing-card-face playing-card-back" aria-hidden="true">
+                    <div class="card-back-body">
+                        <p class="card-back-role">${project.role}</p>
+                        <h3 class="card-back-title">${project.client}</h3>
+                        <p class="card-back-description">${project.description}</p>
+                        <div class="card-back-tags">${backTags}</div>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    attachCardHandlers(container) {
+        container.addEventListener('click', (e) => {
+            const card = e.target.closest('.playing-card-wrapper');
+            if (!card) return;
+
+            container.querySelectorAll('.playing-card-wrapper.flipped')
+                .forEach(c => { if (c !== card) c.classList.remove('flipped'); });
+            card.classList.toggle('flipped');
+        });
+
+    }
+
     renderProjectGrid() {
         const grid = document.getElementById('project-grid');
         if (!grid) return;
 
+        // nosec: data from local JSON, not user input
         grid.innerHTML = this.projects.map((project, index) => `
-            <article class="project-card" data-project-id="${project.id}" style="animation-delay: ${index * 0.1}s">
-                <div class="project-image-container" style="overflow: hidden;">
-                    <img src="assets/images/${project.thumbnail}"
-                         alt="${project.title}"
-                         class="project-image"
-                         loading="lazy">
-                </div>
-                <div class="project-content">
-                    <div class="project-role">${project.role}</div>
-                    <h3 class="project-title">${project.client}</h3>
-                    <p class="project-description">${project.description.slice(0, 120)}${project.description.length > 120 ? '...' : ''}</p>
-                    <div class="project-tags">
-                        ${project.tags.slice(0, 3).map(tag => `
-                            <span class="project-tag">${tag}</span>
-                        `).join('')}
-                    </div>
-                </div>
-            </article>
-        `).join('');
+            <div class="playing-card-wrapper" data-project-id="${project.id}" style="animation-delay: ${index * 0.1}s">
+                ${this.buildCardHTML(project)}
+            </div>`).join('');
 
-        // Add click event listeners with modern event delegation
-        grid.addEventListener('click', (e) => {
-            const card = e.target.closest('.project-card');
-            if (card) {
-                const projectId = card.getAttribute('data-project-id');
-                this.openModal(projectId);
-            }
-        });
-
-        // Intersection Observer for animation on scroll
+        this.attachCardHandlers(grid);
         this.observeProjectCards();
-    }
-
-    renderWorkThumbnails() {
-        const thumbnailContainer = document.getElementById('work-thumbnails');
-        if (!thumbnailContainer) return;
-
-        const featuredProjects = this.projects.slice(0, 3);
-
-        thumbnailContainer.innerHTML = featuredProjects.map(project => `
-            <div class="work-thumbnail-card" data-project-id="${project.id}">
-                <div class="work-thumbnail-image">
-                    <img src="assets/images/${project.thumbnail}"
-                         alt="${project.title}"
-                         loading="lazy">
-                </div>
-                <div class="work-thumbnail-content">
-                    <div class="work-thumbnail-role">${project.role}</div>
-                    <h3 class="work-thumbnail-title">${project.client}</h3>
-                </div>
-            </div>
-        `).join('');
-
-        thumbnailContainer.addEventListener('click', (e) => {
-            const card = e.target.closest('.work-thumbnail-card');
-            if (card) {
-                const projectId = card.getAttribute('data-project-id');
-                this.expandWorkSection();
-                setTimeout(() => {
-                    this.openModal(projectId);
-                }, 300);
-            }
-        });
-    }
-
-    expandWorkSection() {
-        const workToggle = document.getElementById('work-toggle');
-        const workContent = document.getElementById('work-content');
-        const workSummary = document.getElementById('work-summary');
-        const workToggleTop = document.getElementById('work-toggle-top');
-        const workToggleBottom = document.getElementById('work-toggle-bottom');
-
-        if (workToggle && workContent && workSummary) {
-            workToggle.setAttribute('aria-expanded', 'true');
-            workContent.setAttribute('aria-hidden', 'false');
-            workSummary.setAttribute('aria-hidden', 'true');
-
-            if (workToggleTop) workToggleTop.setAttribute('aria-expanded', 'true');
-            if (workToggleBottom) workToggleBottom.setAttribute('aria-expanded', 'true');
-        }
     }
 
     observeProjectCards() {
@@ -128,7 +91,7 @@ class ModernPortfolio {
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.project-card').forEach(card => {
+        document.querySelectorAll('#project-grid .playing-card-wrapper').forEach(card => {
             observer.observe(card);
         });
     }
@@ -446,51 +409,6 @@ class ModernPortfolio {
 
         if (resumeToggleBottom) {
             resumeToggleBottom.addEventListener('click', toggleResume);
-        }
-
-        // Work expand/collapse toggle
-        const workToggle = document.getElementById('work-toggle');
-        const workToggleTop = document.getElementById('work-toggle-top');
-        const workToggleBottom = document.getElementById('work-toggle-bottom');
-        const workContent = document.getElementById('work-content');
-        const workSummary = document.getElementById('work-summary');
-
-        const toggleWork = () => {
-            const isExpanded = workToggle.getAttribute('aria-expanded') === 'true';
-
-            if (isExpanded) {
-                // Collapse - show summary, hide full content
-                workToggle.setAttribute('aria-expanded', 'false');
-                workContent.setAttribute('aria-hidden', 'true');
-                workSummary.setAttribute('aria-hidden', 'false');
-                workToggle.querySelector('.toggle-text').textContent = 'View All Projects';
-                workToggle.classList.remove('expanded');
-
-                // Scroll back to work section top
-                const workSection = document.getElementById('work');
-                if (workSection) {
-                    workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            } else {
-                // Expand - hide summary, show full content
-                workToggle.setAttribute('aria-expanded', 'true');
-                workContent.setAttribute('aria-hidden', 'false');
-                workSummary.setAttribute('aria-hidden', 'true');
-                workToggle.querySelector('.toggle-text').textContent = 'Hide Projects';
-                workToggle.classList.add('expanded');
-            }
-        };
-
-        if (workToggle && workContent && workSummary) {
-            workToggle.addEventListener('click', toggleWork);
-        }
-
-        if (workToggleTop) {
-            workToggleTop.addEventListener('click', toggleWork);
-        }
-
-        if (workToggleBottom) {
-            workToggleBottom.addEventListener('click', toggleWork);
         }
 
         // Contact form handler with visual feedback
