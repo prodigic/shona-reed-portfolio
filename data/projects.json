@@ -1,12 +1,12 @@
 [
   {
     "id": "uxisready",
-    "title": "UX is Ready",
-    "client": "UX is Ready",
-    "role": "Founder / UX Consultant",
+    "title": "Product Experience Framework",
+    "client": "Product Experience Framework",
+    "role": "Research Leader",
     "tags": ["ux consultancy", "startups", "lean ux"],
     "description": "UX is Ready is a research & design consultancy based in Barcelona, working with clients both locally and Internationally. Some of our clients need to improve their existing user experiences, while others hire us to craft a new product or service. We tailor our process to meet each clients needs, shaping products and services that work and customers enjoy using.",
-    "thumbnail": "uxisready.png",
+    "thumbnail": "confluence_framework.png",
     "clientLogo": "logo_uxisready.png",
     "images": ["uxisready_a.png", "uxisready_b.png"],
     "projectDate": "April 2010",
